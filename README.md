@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Projeto de site para catalogar filmes de cinema.
+- Função de adicionar novos filmes
+- Filtrar por ordem alfabética ou data de lançamento
+- Mostrar filme detalhadamente
+- Pesquisar filme
+- Deletar Filme
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Para rodar, apenas abra o projeto no cmd com Ruby e Rails instalado e execute um servidor Rails.
