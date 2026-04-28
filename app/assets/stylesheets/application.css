@@ -1,0 +1,94 @@
+/* Fundo geral */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+  margin: 20px;
+}
+
+/* Título */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Formulário */
+form {
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  padding: 6px;
+  border-radius: 5px;
+  border: none;
+  margin-right: 10px;
+}
+
+input[type="submit"] {
+  padding: 6px 12px;
+  border-radius: 5px;
+  border: none;
+  background-color: #ff4c4c;
+  color: white;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #ff1f1f;
+}
+
+/* Checkboxes */
+label {
+  margin-right: 10px;
+}
+
+/* Tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Cabeçalho */
+th {
+  background-color: #2c2c2c;
+  padding: 10px;
+  text-align: left;
+}
+
+/* Linhas */
+td {
+  padding: 10px;
+  border-top: 1px solid #333;
+}
+
+/* Hover nas linhas */
+tr:hover {
+  background-color: #2a2a2a;
+}
+
+/* Links */
+a {
+  color: #ff4c4c;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Destaque da ordenação */
+.highlight {
+  color: #00e676;
+  font-weight: bold;
+}
+
+/* Mensagem de sucesso */
+p[style*="color: green"] {
+  background-color: #003300;
+  padding: 10px;
+  border-radius: 5px;
+  color: #00ff99 !important;
+}

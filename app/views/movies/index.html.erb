@@ -1,0 +1,95 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Movies" %>
+
+<h1>Movies</h1>
+
+<%
+def sort_indicator(column)
+  if params[:sort] == column
+    params[:direction] == "desc" ? " ↓" : " ↑"
+  else
+    ""
+  end
+end
+%>
+
+<%
+def sort_class(column)
+  params[:sort] == column ? "highlight" : ""
+end
+%>
+
+<%= form_with url: movies_path, method: :get, local: true do %>
+
+  <!-- busca por título -->
+  <%= label_tag :search, "Search by title:" %>
+  <%= text_field_tag :search, params[:search] %>
+
+  <br><br>
+
+  <!-- filtros de rating -->
+  <% ['G', 'PG', 'PG-13', 'R'].each do |rating| %>
+    <%= check_box_tag "ratings[#{rating}]", 1, params[:ratings]&.key?(rating) %>
+    <%= label_tag "ratings_#{rating}", rating %>
+  <% end %>
+
+  <br><br>
+
+  <%= submit_tag "Filter" %>
+<% end %>
+
+<%
+def next_direction(column)
+  if params[:sort] == column && params[:direction] == "asc"
+    "desc"
+  else
+    "asc"
+  end
+end
+%>
+
+<p>Sort by:</p>
+
+<%= link_to "Title#{sort_indicator('title')}", movies_path(
+  sort: "title",
+  direction: next_direction("title"),
+  search: params[:search],
+  ratings: params[:ratings]
+) %> |
+
+<%= link_to "Release Date#{sort_indicator('release_date')}", movies_path(
+  sort: "release_date",
+  direction: next_direction("release_date"),
+  search: params[:search],
+  ratings: params[:ratings]
+) %>
+
+<table>
+  <thead>
+  	<tr>
+    		<th>Title</th>
+    		<th>Release Date</th>
+    		<th>Rating</th>
+    		<th>Description</th>
+    		<th></th>
+  		</tr>
+  </thead>
+
+  <tbody>
+  	<% @movies.each do |movie| %>
+    		<tr>
+      			<td><%= link_to movie.title, movie %></td>
+      			<td><%= movie.release_date %></td>
+      			<td><%= movie.rating %></td>
+      			<td><%= movie.description %></td>
+      			<td>
+      			<%= link_to "Show", movie %> |
+      			<%= link_to "Edit", edit_movie_path(movie) %>
+			</td>
+    		</tr>
+  	<% end %>
+  </tbody>
+</table>
+
+<%= link_to "New movie", new_movie_path %>
