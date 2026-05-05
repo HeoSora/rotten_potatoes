@@ -4,6 +4,16 @@
 
 <h1>Movies</h1>
 
+<h2>Search TMDb</h2>
+
+<%= form_with url: search_tmdb_movies_path, method: :get, local: true do %>
+  <%= label_tag :search_terms, "Search TMDb for a movie:" %>
+  <%= text_field_tag :search_terms %>
+  <%= submit_tag "Search TMDb" %>
+<% end %>
+
+<br>
+
 <%
 def sort_indicator(column)
   if params[:sort] == column

@@ -1,0 +1,23 @@
+<h1>Results from TMDb</h1>
+
+<%= link_to "← Back to Movies", movies_path, style: "display:inline-block; margin-top:20px; margin-bottom:20px;" %>
+
+<% @results.each do |movie| %>
+  <div>
+    <strong><%= movie["title"] %></strong>
+    (<%= movie["release_date"] %>)
+
+    <p><%= movie["overview"] %></p>
+
+    <%= button_to "Add Movie",
+      add_from_tmdb_movies_path(
+        movie: {
+          title: movie["title"],
+          overview: movie["overview"],
+          release_date: movie["release_date"]
+        }
+      ),
+      method: :post %>
+  </div>
+  <hr>
+<% end %>

@@ -20,9 +20,30 @@ class MoviesController < ApplicationController
     		direction = params[:direction] == "desc" ? "desc" : "asc"
 
     		if ["title", "release_date"].include?(params[:sort])
-     	 		@movies = @movies.order("#{params[:sort]} #{direction}")
+     	 		if params[:sort] == "title"
+  				@movies = @movies.order("LOWER(title) #{direction}")
+			else
+  				@movies = @movies.order("#{params[:sort]} #{direction}")
+			end
     		end
  	end
+  end
+
+  def search_tmdb
+  	@results = Movie.search_tmdb(params[:search_terms])
+  end
+
+  def add_from_tmdb
+  	movie_data = params[:movie]
+
+  	Movie.create!(
+    		title: movie_data[:title],
+    		description: movie_data[:overview],
+    		release_date: movie_data[:release_date],
+    		rating: "PG" # placeholder
+  	)
+
+  	redirect_to movies_path, notice: "Movie added from TMDb"
   end
 
   # GET /movies/1 or /movies/1.json
