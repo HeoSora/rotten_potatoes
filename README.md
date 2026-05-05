@@ -6,5 +6,6 @@ Projeto de site para catalogar filmes de cinema.
 - Mostrar filme detalhadamente
 - Pesquisar filme
 - Deletar Filme
+- Adicionar filmes da database do TMDb
 
 Para rodar, apenas abra o projeto no cmd com Ruby e Rails instalado e execute um servidor Rails.
